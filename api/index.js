@@ -1,15 +1,16 @@
-const express = require('express');
+// eslint-env: node
+const express = require('express')
 
-const app = express();
+const app = express()
 
-const port = process.env.PORT || 8080;
-app.listen(port);
+const port = process.env.PORT || 8080
+app.listen(port)
 
 const generateBallotData = () => {
   return {
     items: [
       {
-        id: "best-picture",
+        id: 'best-picture',
         items: [
           {
             title: 'Nomadland',
@@ -35,12 +36,12 @@ const generateBallotData = () => {
             title: 'One Night in Miami',
             photoUrL: 'https://variety.com/wp-content/uploads/2020/12/one_night_in_miami.jpg',
             id: 'one-night-in-miami'
-          },
+          }
         ],
-        title: "Best Picture"
+        title: 'Best Picture'
       },
       {
-        id: "best-director",
+        id: 'best-director',
         items: [
           {
             title: 'Chloé Zhao for Nomadland',
@@ -66,15 +67,15 @@ const generateBallotData = () => {
             title: 'Regina King for One Night in Miami',
             photoUrL: 'https://variety.com/wp-content/uploads/2020/12/one_night_in_miami.jpg',
             id: 'regina-king'
-          },
+          }
         ],
-        title: "Best Director"
+        title: 'Best Director'
       },
       {
-        id: "best-actor",
+        id: 'best-actor',
         items: [
           {
-            title: 'Chadwick Boseman for Ma Rainey\'s Black Bottom',
+            title: "Chadwick Boseman for Ma Rainey's Black Bottom",
             photoUrL: 'https://variety.com/wp-content/uploads/2020/12/ma_raineys_black_bottom_ver2.jpg',
             id: 'chadwick-boseman'
           },
@@ -97,12 +98,12 @@ const generateBallotData = () => {
             title: 'Riz Ahmed for The Sound of Metal',
             photoUrL: 'https://variety.com/wp-content/uploads/2020/12/sound_of_metal_ver2.jpg',
             id: 'riz-ahmed'
-          },
+          }
         ],
-        title: "Best Actor"
+        title: 'Best Actor'
       },
       {
-        id: "best-actress",
+        id: 'best-actress',
         items: [
           {
             title: 'Vanessa Kirby for Pieces of a Woman',
@@ -120,7 +121,7 @@ const generateBallotData = () => {
             id: 'carey-mulligan'
           },
           {
-            title: 'Viola Davis for Ma Rainey\'s Black Bottom',
+            title: "Viola Davis for Ma Rainey's Black Bottom",
             photoUrL: 'https://variety.com/wp-content/uploads/2020/12/ma_raineys_black_bottom.jpg',
             id: 'viola-davis'
           },
@@ -128,12 +129,12 @@ const generateBallotData = () => {
             title: 'Meryl Streep for The Prom',
             photoUrL: 'https://variety.com/wp-content/uploads/2020/12/prom_ver2.jpg',
             id: 'meryl-streep'
-          },
+          }
         ],
-        title: "Best Actress"
+        title: 'Best Actress'
       },
       {
-        id: "best-supporting-actor",
+        id: 'best-supporting-actor',
         items: [
           {
             title: 'Daniel Kaluuya for Judas and the Black Messiah',
@@ -159,12 +160,12 @@ const generateBallotData = () => {
             title: 'Chadwick Boseman for Da 5 Bloods',
             photoUrL: 'https://variety.com/wp-content/uploads/2020/12/da_five_bloods_ver2.jpg',
             id: 'chadwick-boseman'
-          },
+          }
         ],
-        title: "Best Supporting Actor"
+        title: 'Best Supporting Actor'
       },
       {
-        id: "best-supporting-actress",
+        id: 'best-supporting-actress',
         items: [
           {
             title: 'Olivia Colman for The Father',
@@ -190,12 +191,12 @@ const generateBallotData = () => {
             title: 'Yuh-jung Youn for Minari',
             photoUrL: 'https://variety.com/wp-content/uploads/2020/12/minari-1.jpg',
             id: 'yuh-jung-youn'
-          },
+          }
         ],
-        title: "Best Supporting Actress"
+        title: 'Best Supporting Actress'
       },
       {
-        id: "best-visual-effects",
+        id: 'best-visual-effects',
         items: [
           {
             title: 'The Midnight Sky',
@@ -221,19 +222,19 @@ const generateBallotData = () => {
             title: 'Mulan',
             photoUrL: 'https://variety.com/wp-content/uploads/2020/12/minari-1.jpg',
             id: 'mulan'
-          },
+          }
         ],
-        title: "Best Visual Effects"
+        title: 'Best Visual Effects'
       }
-    ],
+    ]
   }
 }
 
-const ballotData = generateBallotData();
+const ballotData = generateBallotData()
 
-app.get('/api/getBallotData', (req, res) => {
-  res.json(ballotData);
-  console.log('Sent navigation categories and list of nominees');
-});
+app.get('/api/getBallotData', (_, response) => {
+  response.json(ballotData)
+  console.log('Sent navigation categories and list of nominees')
+})
 
-console.log('App is listening on port ' + port);
+console.log('App is listening on port ' + port)
