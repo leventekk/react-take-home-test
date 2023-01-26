@@ -1,5 +1,6 @@
 import type { PropsWithChildren, ReactElement } from 'react'
 import styled from 'styled-components'
+import media from '@common/helpers/media'
 
 const Backdrop = styled.div`
   align-items: center;
@@ -18,9 +19,13 @@ const Wrapper = styled.div`
   background: ${({ theme }) => theme.palette.secondary};
   color: ${({ theme }) => theme.palette.primary};
   min-height: 300px;
-  min-width: 450px;
+  min-width: 100%;
   padding: 1rem;
   position: relative;
+
+  ${media.greaterThan('desktop')`
+    min-width: 450px;
+  `}
 `
 
 const Title = styled.h4`
