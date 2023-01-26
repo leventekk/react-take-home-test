@@ -23,7 +23,8 @@ describe('ballotReducer', () => {
               {
                 id: 'mock-nominee-id',
                 title: 'mock-nominee-title',
-                photoUrl: 'http://mock-category-image.com'
+                photoUrl: 'http://mock-category-image.com',
+                isSelected: false
               }
             ],
             isAllowedToVote: true

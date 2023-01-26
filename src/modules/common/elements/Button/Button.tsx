@@ -10,7 +10,6 @@ const Button = styled.button`
 
   &:not(:disabled):hover {
     background: ${({ theme }) => theme.palette.accentHover};
-    border-color: ${({ theme }) => theme.palette.accent};
   }
 
   &:disabled {

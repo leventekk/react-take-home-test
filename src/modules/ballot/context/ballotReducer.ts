@@ -1,4 +1,22 @@
-import type { Action, State } from './BallotContext'
+import type { Action, Category, CategoryItem, Nominee, State } from './BallotContext'
+
+const mapItemsAfterVote =
+  (entryId: Nominee['entityId']) =>
+  ({ id, title, photoUrl }: CategoryItem): CategoryItem => ({
+    id,
+    title,
+    photoUrl,
+    isSelected: entryId === id
+  })
+
+const mapCategoriesAfterVote =
+  ({ categoryId, entityId }: Nominee) =>
+  ({ id, title, items, isAllowedToVote }: Category): Category => ({
+    id,
+    title,
+    items: items.map(mapItemsAfterVote(entityId)),
+    isAllowedToVote: id === categoryId ? false : isAllowedToVote
+  })
 
 const ballotReducer = (state: State, action: Action): State => {
   switch (action.type) {
@@ -8,7 +26,7 @@ const ballotReducer = (state: State, action: Action): State => {
         categories: action.categories.map(({ id, title, items }) => ({
           id,
           title,
-          items,
+          items: items.map((item) => ({ ...item, isSelected: false })),
           isAllowedToVote: true
         }))
       }
@@ -25,14 +43,10 @@ const ballotReducer = (state: State, action: Action): State => {
         categoryId,
         entityId
       }
+
       return {
         ...state,
-        categories: state.categories.map(({ id, title, items, isAllowedToVote }) => ({
-          id,
-          title,
-          items,
-          isAllowedToVote: id === categoryId ? false : isAllowedToVote
-        })),
+        categories: state.categories.map(mapCategoriesAfterVote(nominee)),
         nominees: [...state.nominees, nominee]
       }
     }

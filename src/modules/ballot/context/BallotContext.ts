@@ -4,6 +4,7 @@ export interface CategoryItem {
   title: string
   photoUrl: string
   id: string
+  isSelected: boolean
 }
 
 export interface Category {
@@ -13,7 +14,7 @@ export interface Category {
   items: CategoryItem[]
 }
 
-interface Nominee {
+export interface Nominee {
   categoryId: string
   entityId: string
 }
