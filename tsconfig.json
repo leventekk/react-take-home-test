@@ -18,7 +18,8 @@
     "jsx": "react-jsx",
     "paths": {
       "@ballot/*": ["modules/ballot/*"],
-      "@common/*": ["modules/common/*"]
+      "@common/*": ["modules/common/*"],
+      "@test/*": ["test/*"]
     },
     "plugins": [
       {

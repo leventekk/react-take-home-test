@@ -1,5 +1,11 @@
-export const getBallots = async (): Promise<Array<{ title: string }>> => {
-  const response = await fetch(`${process.env.API_URL}/api/getBallots`)
+import type { Category } from '../context/BallotContext'
 
-  return await response.json()
+export const getBallots = async (signal?: AbortSignal): Promise<Category[]> => {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/api/getBallotData`, {
+    signal
+  })
+
+  const { items } = await response.json()
+
+  return items
 }
