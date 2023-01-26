@@ -2,11 +2,14 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App'
+import Theme from '@common/elements/Theme/Theme'
 import reportWebVitals from './reportWebVitals'
 
 createRoot(document.querySelector('#root') as HTMLElement).render(
   <StrictMode>
-    <App />
+    <Theme>
+      <App />
+    </Theme>
   </StrictMode>
 )
 
